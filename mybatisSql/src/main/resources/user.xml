@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.qf.userdao.UsersDao">
+  
+  <parameterMap type="map" id="map1">
+  	<parameter property="x" jdbcType="INTEGER" mode="IN"/>
+  	<parameter property="y" jdbcType="INTEGER" mode="OUT"/>
+  
+  
+  </parameterMap>
+  	<update id="userp" parameterMap="map1" statementType="CALLABLE" >
+  		{call p(?,?)}
+  	</update>
+  
+  <select id="finduser" resultType="com.qf.mode.Users">
+  
+  {call p1()}
+  </select>
+  <parameterMap type="map" id="map2">
+  	<parameter property="x" jdbcType="INTEGER" mode="INOUT"/>
+  
+  </parameterMap>
+  <update id="inout" parameterMap="map2" statementType="CALLABLE">
+  {call p2(?)}
+  </update>
+  <parameterMap type="map" id="z1">
+  	<parameter property="x" jdbcType="INTEGER" mode="IN"/>
+  	<parameter property="y" jdbcType="FLOAT" mode="OUT"/>
+  </parameterMap>
+  <update id="zy" parameterMap="z1" statementType="CALLABLE">
+  	{call zy(?,?)}
+  </update>
+  
+  </mapper>
